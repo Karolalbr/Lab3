@@ -1,0 +1,82 @@
+﻿@model Contact
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*@if (Model.Count > 0)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Imie
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Numer tel
+                </th>
+                <th>
+                   data urodzenia
+                </th>
+                <th>
+                    Akcje
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="@(item.Value.Name.EndsWith("a")? "text-primary":"text-secondary")">
+                        @item.Value.Name
+                    </td>
+                    <td>
+                        @item.Value.Email
+                    </td>
+                    <td>
+                        @item.Value.Phone
+                    </td>
+                    <td>
+                        @item.Value.Birth
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}*@
+<form asp-controller="Contact" asp-action="Update" method="post">
+    <input asp-for="Id" />
+    <div class="mb-3">
+        <label asp-for="Name">Imie</label>
+        <input class="form-control" asp-for="Name" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email">Email</label>
+        <input class="form-control" asp-for="Email" />
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Phone">Numer telefonu</label>
+        <input class="form-control" asp-for="Phone" />
+        <span class="text-danger" asp-validation-for="Phone"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Birth">Data Urodzenia</label>
+        <input class="form-control" asp-for="Birth" />
+        <span class="text-danger" asp-validation-for="Birth"></span>
+    </div>
+
+    <button <a asp-controller="Kontakt" asp-action="NazwaAkcji" class="btn btn-secondary">Przejdź do strony Kontakt</a>
+></button>
+
+
+
+
+</form>
